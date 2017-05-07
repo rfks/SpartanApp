@@ -11,6 +11,7 @@
     android:background="#030303"
     android:orientation="horizontal">
 
+
     <LinearLayout
         android:id="@+id/linearlayout1"
         android:layout_width="0dp"
