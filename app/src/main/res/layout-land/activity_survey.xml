@@ -5,14 +5,13 @@
     android:id="@+id/scrollview1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center_vertical"
     android:background="@color/black">
 
     <LinearLayout
         android:id="@+id/linearlayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_vertical"
+        android:layout_gravity="center"
         android:orientation="vertical">
 
         <TextView
@@ -115,11 +114,11 @@
                 android:id="@+id/Sun"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="sun"
+                android:text="Sun"
                 android:textColor="@color/blue"
                 app:buttonTint="@color/blue" />
         </LinearLayout>
-
+        
         <TextView
             android:id="@+id/textview5"
             android:layout_width="match_parent"
