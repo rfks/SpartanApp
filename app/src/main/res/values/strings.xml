@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">HelloWorld</string>
+    <string name="warningNoNameEntered">Please enter your name!</string>
+    <string name="warningNoEmailEntered">Please enter your email address!</string>
+    <string name="warningNoDaySelected">Please pick at least one day!</string>
+    <string name="confirmFirstPart">Thanks, you are the </string>
+    <string name="confirmSecondPart">. who responded.</string>
+    <string name="warningNoStats">No applicants yet.</string>
+    <string name="statsApplicants">All applicants:</string>
+    <string name="statsNewbies">Newbies:</string>
+    <string name="statsMon">Mon:</string>
+    <string name="statsTue">Tue:</string>
+    <string name="statsWed">Wed:</string>
+    <string name="statsThu">Thu:</string>
+    <string name="statsFri">Fri:</string>
+    <string name="statsSat">Sat:</string>
+    <string name="statsSun">Sun:</string>
 </resources>

@@ -15,12 +15,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 
-
 public class MainActivity extends AppCompatActivity {
     /*store the applicants detials in an ArrayList*/
     ArrayList<Applicant> Applicants = new ArrayList<Applicant>();
-    private RadioGroup radioNewGroup;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,28 +27,31 @@ public class MainActivity extends AppCompatActivity {
 
     /*starting the animation here*/
     @Override
-    public void onWindowFocusChanged(boolean hasFocus){
+    public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         AnimationDrawable frameAnimation = (AnimationDrawable) (findViewById(R.id.spartan_image)).getBackground();
-        if(hasFocus) { frameAnimation.start(); } else { frameAnimation.stop(); }
+        if (hasFocus) {
+            frameAnimation.start();
+        } else {
+            frameAnimation.stop();
+        }
     }
 
     /*confirm availability*/
     public void confirm(View view) {
         setContentView(R.layout.activity_survey);
-        radioNewGroup = (RadioGroup) findViewById(R.id.radiogroup1);
     }
 
     /*submit details*/
     public void submit(View view) {
         /*check if name is not empty*/
         if (((EditText) findViewById(R.id.name)).getText().length() == 0) {
-            Toast.makeText(getApplicationContext(), "Please enter your name!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.warningNoNameEntered, Toast.LENGTH_SHORT).show();
             return;
         }
         /*check if email is not empty*/
         if (((EditText) findViewById(R.id.email)).getText().length() == 0) {
-            Toast.makeText(getApplicationContext(), "Please enter your email address!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.warningNoEmailEntered, Toast.LENGTH_SHORT).show();
             return;
         }
         /*check if availability was chosen or not */
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                         ((CheckBox) findViewById(R.id.sun)).isChecked())
 
                 ) {
-            Toast.makeText(getApplicationContext(), "Please pick at least one day!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.warningNoDaySelected, Toast.LENGTH_SHORT).show();
             return;
         }
         /*add the new details to the ArrayList*/
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                         (((CheckBox) findViewById(R.id.sat)).isChecked() ? 1 : 0) * 32 +
                         (((CheckBox) findViewById(R.id.sun)).isChecked() ? 1 : 0) * 64,
                 ((RadioButton) findViewById(R.id.no)).isChecked()));
-        Toast.makeText(getApplicationContext(), "Thanks, you are the " + Applicants.size() + ". who responded.", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), getString(R.string.confirmFirstPart) +" "+ Applicants.size() + getString(R.string.confirmSecondPart), Toast.LENGTH_LONG).show();
         setContentView(R.layout.activity_main);
     }
 
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
     public void stats(View view) {
         int mon = 0, tue = 0, wed = 0, thu = 0, fri = 0, sat = 0, sun = 0, newbie = 0;
         if (Applicants.size() == 0) {
-            Toast.makeText(getApplicationContext(), "No applicants yet.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.warningNoStats, Toast.LENGTH_LONG).show();
         } else {
             for (Iterator it = Applicants.iterator(); it.hasNext(); ) {
                 Applicant applicant = (Applicant) it.next();
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
                     newbie++;
                 }
             }
-            Toast.makeText(getApplicationContext(), "All applicants: " + Applicants.size() + "\nNewbies: " + newbie + "\nMon: " + mon + "\nTue: " + tue + "\nWed: " + wed + "\nThu: " + thu + "\nFri: " + fri + "\nSat: " + sat + "\nSun: " + sun, Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.statsApplicants) + Applicants.size() +"\n"+ getString(R.string.statsNewbies) + newbie +"\n"+ getString(R.string.statsMon) + mon +"\n"+ getString(R.string.statsTue) + tue +"\n"+ getString(R.string.statsWed) + wed +"\n"+ getString(R.string.statsThu) + thu +"\n"+ getString(R.string.statsFri) + fri +"\n"+ getString(R.string.statsSat) + sat +"\n"+ getString(R.string.statsSun) + sun, Toast.LENGTH_LONG).show();
         }
     }
 }
